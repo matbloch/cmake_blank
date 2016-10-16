@@ -1,0 +1,16 @@
+PROJECT(CMAKEBLANK_APPLICATIONS)
+
+SET(CMAKEBLANK_APPLICATION_DIR ${PROJECT_SOURCE_DIR})
+
+SET(TARGET_DEFAULT_PREFIX "application_")
+SET(TARGET_DEFAULT_LABEL_PREFIX "Applications")
+# IDE folder
+SET(TARGET_DEFAULT_FOLDER "Applications")
+
+# project libraries for all applications
+SET(TARGET_COMMON_LIBRARIES 
+    # yourAdditionalLib
+	io
+)
+
+ADD_SUBDIRECTORY(app1)
