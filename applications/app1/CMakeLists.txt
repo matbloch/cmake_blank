@@ -6,4 +6,4 @@ SET(TARGET_H
     # header.h
 )
 
-SETUP_APPLICATION(app1)
+SETUP_APPLICATION(app1 Applications)
