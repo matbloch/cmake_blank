@@ -61,6 +61,15 @@ OPTION(BUILD_CMAKEBLANK_APPLICATIONS "Enable to build Applications" ON)
 OPTION(BUILD_CMAKEBLANK_EXAMPLES "Enable to build Examples" OFF)
 
 #-------------------------------------------------
+# Config header
+#-------------------------------------------------
+
+SET(CONFIG_HEADER "${PROJECT_BINARY_DIR}/include/Config.h")
+CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/src/Config.cmake.in"
+               "${CONFIG_HEADER}")
+
+
+#-------------------------------------------------
 # 3rd Party Dependency
 #-------------------------------------------------
 
