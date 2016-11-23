@@ -89,7 +89,7 @@ MACRO(SETUP_LINK_LIBRARIES)
 		# append if not in common libs
 		IF(NOT IN_COMMON)
 			LIST(APPEND TARGET_LIBRARIES ${LINKLIB})
-		ENDIF(IN_COMMON)
+		ENDIF(NOT IN_COMMON)
     ENDFOREACH(LINKLIB)
 
 	# link libraries
@@ -97,7 +97,6 @@ MACRO(SETUP_LINK_LIBRARIES)
 	LINK_EXTERNAL(${TARGET_TARGETNAME} ${TARGET_EXTERNAL_LIBRARIES})
 
 ENDMACRO(SETUP_LINK_LIBRARIES)
-
 
 #######################################################################################################
 #	Setup command line application
@@ -136,15 +135,21 @@ MACRO(SETUP_EXE)
 ENDMACRO(SETUP_EXE)
 
 # setup an application
-MACRO(SETUP_APPLICATION APPLICATION_NAME)
+MACRO(SETUP_APPLICATION APPLICATION_NAME FOLDER_NAME)
 
         SET(TARGET_NAME ${APPLICATION_NAME} )
 
 		# setup command line application
         SETUP_EXE()
+		
+		IF(NOT FOLDER_NAME)
+			SET(FOLDER_NAME "Applications")
+		ENDIF(NOT FOLDER_NAME)
 
 		# set solution folder
-        SET_TARGET_PROPERTIES(${TARGET_TARGETNAME} PROPERTIES FOLDER "Applications")
-
+        SET_TARGET_PROPERTIES(${TARGET_TARGETNAME} PROPERTIES FOLDER ${FOLDER_NAME})
+		
+		# unset traget name - allow multiple calls to SETUP_EXE
+		UNSET(TARGET_TARGETNAME)
 
 ENDMACRO(SETUP_APPLICATION)
