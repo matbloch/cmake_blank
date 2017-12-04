@@ -8,8 +8,8 @@ namespace io
 	class Talker {
 		public:
 		Talker();
-		void Talker::talk();
-		void Talker::say(std::string sentence);
+		void talk();
+		void say(std::string sentence);
 	};
 };
 
